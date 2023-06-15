@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- 1.基本使用 -->
+    <h2>{{ message }}</h2>
+    <h2>当前计数: {{ counter }}</h2>
+
+    <!-- 2.表达式 -->
+    <h2>{{ counter*2 }}</h2>
+    <h2>{{ info.split(" ") }}</h2>
+
+    <!-- 3.三元运算符 -->
+    <h2>{{ age>=18?"成年人":"未成年" }}</h2>
+
+    <!-- 4.调用methods中的函数 -->
+    <h2>{{ formatDate("也可以调用函数") }}</h2>
+
+    <!-- 5.注意：这里不能定义语句 -->
+    <!-- <h2> {{ let name="我是个语句" }}</h2> -->
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+      data: function () {
+        return {
+          message: "Heelo Vue",
+          counter: 100,
+          info: "my name is code",
+          age: 18,
+        }
+      },
+      methods: {
+        formatDate: function (date) {
+          return "2023-6-15-" + date
+        }
+      }
+    })
+
+    // 2.挂载Vue
+    vue.mount("#app")
+  </script>
+</body>
+
+</html>
