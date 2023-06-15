@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app" >
+        <!-- 如果数组中的每个值和上次渲染的时候相同,则整个该子树的更新会被跳过 -->
+        <div v-memo="[name]">
+            <div>
+                <h2>{{name }}</h2>
+                <h2>{{ age }}</h2>
+                <h2>{{ height }}</h2>
+                <button @click="updateUserName">更新名字</button>
+                <button @click="updateUserAge">更新年龄</button>
+
+            </div>
+           
+        </div>
+  
+    
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+        data:()=>{
+            return {
+                name:"我是名字1",
+                    age:18,
+                    height:1.88
+
+            }
+        },
+        methods:{
+            updateUserName:function(){
+                this.name="我是名字2"
+            },
+            updateUserAge:function(){
+                this.age=20
+            }
+        }
+    })
+
+    // 2.挂载vue
+    vue.mount("#app")
+  </script>
+</body>
+</html>
