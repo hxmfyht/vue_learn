@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <div>
+      <button @click="switchImage">切换图片</button>
+
+    </div>
+    <!-- 1.绑定img的src属性 -->
+    <img v-bind:src="showImgUrl" alt="">
+    <!-- 语法糖：v-bind -> : -->
+    <img :src="showImgUrl" alt="">
+
+    <!-- 绑定a的href属性 -->
+    <a :href="href">百度一下</a>
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+      data: function () {
+        return {
+          imgUrl1: "https://y.qq.com/music/common/upload/MUSIC_FOCUS/4641526.jpg?max_age=2592000",
+          imgUrl2: "	https://y.qq.com/music/common/upload/MUSIC_FOCUS/4638975.jpg?max_age=2592000",
+          showImgUrl: "https://y.qq.com/music/common/upload/MUSIC_FOCUS/4641526.jpg?max_age=2592000",
+          href: "http:www.baidu.con"
+        }
+      },
+      methods: {
+        switchImage: function () {
+          this.showImgUrl = this.showImgUrl == this.imgUrl1 ? this.imgUrl2 : this.imgUrl1
+        }
+      }
+    })
+
+    // 2.挂载Vue
+    vue.mount("#app")
+  </script>
+</body>
+
+</html>

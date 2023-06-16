@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .active {
+    background-color: red;
+  }
+</style>
+
+<body>
+
+  <div id="app">
+    <!-- 1.基本绑定class -->
+    <h2 :class="classes">Hello World</h2>
+
+    <!-- 2.动态绑定class -->
+    <button :class="isAction?'active':''" @click="btnClick">点击看我变形</button>
+
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+      data: function () {
+        return {
+          classes: "abc cba nba",
+          isAction: false
+        }
+      },
+      methods: {
+        btnClick: function () {
+          this.isAction = !this.isAction
+        }
+      }
+    })
+
+    // 2.挂载Vue
+    vue.mount("#app")
+  </script>
+</body>
+
+</html>
