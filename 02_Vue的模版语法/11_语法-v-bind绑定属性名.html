@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- 绑定属性名 -->
+    <h2><a :[name]="'www.baidu.com'">绑定属性名</a></h2>
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+      data: function () {
+        return {
+          name: 'href'
+        }
+      }
+    })
+
+    // 2.挂载Vue
+    vue.mount("#app")
+  </script>
+</body>
+
+</html>
