@@ -1,0 +1,48 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- v-if="条件" -->
+    <div v-if="Object.keys(info).length">
+      <h2>个人信息</h2>
+      <ul>
+        <li>姓名:{{ info.name }}</li>
+        <li>年龄:{{ info.age }}</li>
+      </ul>
+    </div>
+    <button @click="clearInfo">清空info对象数据</button>
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+      data: function () {
+        return {
+          info: {
+            "name": "KoBe Bryant",
+            "age": 19
+          }
+        }
+      },
+      methods: {
+        clearInfo: function () {
+          this.info = {}
+        }
+      }
+    })
+
+    // 2.挂载Vue
+    vue.mount("#app")
+  </script>
+</body>
+
+</html>

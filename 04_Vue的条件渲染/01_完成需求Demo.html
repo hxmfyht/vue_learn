@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+
+    <h3>{{ names.length }}</h3>
+    <ul v-if="names.length>0" v-for="item in names">
+      <li>{{ item }}</li>
+    </ul>
+
+
+    <h2 v-else>当前names没有数据,请求获取数据后展示</h2>
+
+    <button @click="btnClick">点击清空数组</button>
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+      data() {
+        return {
+          names: ["Aa", "Bb", "Cc"]
+        }
+      },
+      methods: {
+        btnClick() {
+          this.names = [];
+          console.log("清空完数组的长度===》", this.names.length);
+        }
+      }
+    })
+
+    // 2.挂载Vue
+    vue.mount("#app")
+  </script>
+</body>
+
+</html>
