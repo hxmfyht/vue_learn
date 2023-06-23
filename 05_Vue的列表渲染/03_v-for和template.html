@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- <div v-for="( item, key, index ) in infos ">
+        <span>{{ item }}</span>
+        <strong>{{ key }}</strong>
+        <i>{{ index }}</i>
+
+    </div> -->
+    <!-- 如果div没有实际的意义,那么可以使用template替换 -->
+    <template v-for=" (item,key,index) in infos " >
+        <span>{{ item }}</span>
+        <strong>{{ key }}</strong>
+        <i>{{ index }}</i>
+    </template>
+    
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+        data(){
+            return{
+                infos:{
+                    name:"Kobe Bryant",
+                    age:18,
+                    height:1.88
+                }
+            }
+        }
+    })
+
+    // 2.挂载vue
+    vue.mount("#app")
+  </script>
+</body>
+</html>

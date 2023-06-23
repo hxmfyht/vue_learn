@@ -10,12 +10,37 @@
 <body>
 
   <div id="app">
+    <!-- 1.遍历数组 上个练习-->
+
+    <!-- 2.遍历对象 -->
+    <ul>
+      <li v-for="(value, key, index) in info">
+        {{value}}-{{key}}-{{index}}
+      </li>
+    </ul>
+
+    <!-- 3.遍历字符串(iterable) -->
+    <ul>
+      <li v-for="item in message">{{item}}</li>
+    </ul>
+
+    <!-- 4.遍历数字 -->
+    <ul>
+      <li v-for="item in 100">{{item}}</li>
+    </ul>
   </div>
 
   <script src="../lib/vue.js"></script>
   <script>
     // 1.创建Vue
     const vue = Vue.createApp({
+      data() {
+        return {
+          message: "Hello Vue",
+          movies: [],
+          info: { name: "Kobe Bryant", age: 18, height: 1.88 }
+        }
+      }
     })
 
     // 2.挂载Vue

@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <h2>{{ fullName }}</h2>
+    <button @click="setFullName">点我改名字</button>
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+        data(){
+         return{
+            firstName:'kobe',
+            lastName:'bryant'
+         }
+        },
+        computed:{
+            //语法糖
+            // fullName(){
+            //     return this.firstName+" "+this.lastName;
+            // }
+            fullName:{
+                get:function(){
+                    return this.firstName+""+this.lastName
+                },
+                set:function(value){
+                    let newName=value.split(" ")
+                    this.firstName=newName[0]
+                    this.lastName=newName[1]
+
+                }
+            }
+        },
+        methods:{
+            setFullName(){
+                this.fullName="小铭 同学"
+            }
+        }
+    })
+
+    // 2.挂载vue
+    vue.mount("#app")
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- 1.methods -->
+        <h2>{{ getFullName() }}</h2>
+        <h2>{{ getFullName() }}</h2>
+        <h2>{{ getFullName() }}</h2>
+
+        <!-- 2.computed -->
+        <h2>{{ fullName }}</h2>
+        <h2>{{ fullName }}</h2>
+        <h2>{{ fullName }}</h2>
+
+        <!-- 修改name的值 -->
+        <button @click="changeLastname">修改lastName</button>
+
+        <!-- methods和computed区别：
+        计算属性是有缓存的;
+        计算属性会基于它们的依赖关系进行缓存;
+        在数据不发生变化时,计算属性是不需要重新计算的;
+        但是如果依赖数据发生变化，在使用时，计算属性依然会重新进行计算;
+        -->
+
+
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+        // 1.创建Vue
+        const vue = Vue.createApp({
+            data() {
+                return {
+                    firstName: 'kobe',
+                    lastName: 'bryant'
+                }
+            },
+            methods: {
+                getFullName() {
+                    console.log("getFullName=========");
+                    return this.firstName + " " + this.lastName
+                },
+                changeLastname() {
+                    this.lastName = "lastName"
+                }
+            },
+            computed: {
+                fullName() {
+                    console.log("computed fullname=======>");
+                    return this.firstName + " " + this.lastName
+                }
+            }
+        })
+
+        // 2.挂载vue
+        vue.mount("#app")
+    </script>
+</body>
+
+</html>
