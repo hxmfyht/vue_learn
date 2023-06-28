@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <table>
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>书籍名称</th>
+          <th>出版日期</th>
+          <th>价格</th>
+          <th>购买数量</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(item,index) in bookData ">
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.data }}</td>
+          <td>{{ formatPrice(item.price) }}</td>
+          <td><button disabled="isDisabled(item.count)">-</button>{{ item.count }}<button>+</button></td>
+          <td><button>移除</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>总价：{{formatPrice(sumPrice)}}</h2>
+  </div>
+
+  <script src="../lib/vue.js"></script>
+  <script src="./data/data.js"></script>
+  <script>
+    // 1.创建Vue
+    const vue = Vue.createApp({
+      data() {
+        return {
+          bookData: books
+        }
+      },
+      methods: {
+        formatPrice(price) { return "¥" + price },
+        isDisabled(count) {
+          count => 1 ? true : false
+        }
+      },
+      computed: {
+        sumPrice() {
+          let sum = 0;
+          this.bookData.forEach((item) => sum = +item.price * item.count);
+          return sum;
+        }
+      }
+    })
+
+    // 2.挂载Vue
+    vue.mount("#app")
+  </script>
+</body>
+<style>
+  table {
+    border-collapse: collapse;
+  }
+
+  thead {
+    background-color: #f5f5f5;
+  }
+
+  th,
+  td {
+    border: 1px solid #aaa;
+    padding: 8px 16px;
+    text-align: center;
+  }
+
+  .active {
+    background-color: skyblue;
+  }
+</style>
+
+</html>
