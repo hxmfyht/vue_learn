@@ -26,7 +26,11 @@
           <td>{{ item.name }}</td>
           <td>{{ item.data }}</td>
           <td>{{ formatPrice(item.price) }}</td>
-          <td><button disabled="isDisabled(item.count)">-</button>{{ item.count }}<button>+</button></td>
+          <td>
+            <button disabled="isDisabled(item.count)">-</button>
+            {{ item.count }}
+            <button>+</button>
+          </td>
           <td><button>移除</button></td>
         </tr>
       </tbody>
